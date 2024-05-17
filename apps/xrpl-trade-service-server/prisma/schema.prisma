@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model CalculateXrp {
+  createdAt         DateTime @default(now())
+  currentPrice      Float?
+  id                String   @id @default(cuid())
+  requiredXrpAmount Float?
+  targetPrice       Float?
+  updatedAt         DateTime @updatedAt
+}
+
+model BookOffer {
+  amount    Float?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  offerId   String?
+  price     Float?
+  updatedAt DateTime @updatedAt
+}
